@@ -1,0 +1,20 @@
+version: '1.0'
+
+services:
+  updater:
+    container_name: hhUpdater
+    env_file: ./.env
+    build:
+      context: ./
+    restart: always
+    volumes:
+      - ./:/hhUpdater
+      - /hhUpdater/node_modules
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
